@@ -7,7 +7,7 @@ import com.devs.spring.security.model.PasswordResetToken;
 
 @Repository
 public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
-
+    
     PasswordResetToken findByToken(String token);
 
 }

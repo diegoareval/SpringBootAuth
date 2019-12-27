@@ -12,7 +12,7 @@ import com.devs.spring.security.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmail(String email);
-
+      //actualizar contraseña enreset password view cuando el id del usuario pertenece a la persona que hizo la solicitud
     @Modifying
     @Query("update User u set u.password = :password where u.id = :id")
     void updatePassword(@Param("password") String password, @Param("id") Long id);

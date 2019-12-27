@@ -23,13 +23,16 @@ public class EmailService {
 
     public void sendEmail(Mail mail) {
         try {
+        	//crear metodo para mensaje
             MimeMessage message = emailSender.createMimeMessage();
+            //crear helper para que soporte archivos el correo
             MimeMessageHelper helper = new MimeMessageHelper(message,
                     MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
                     StandardCharsets.UTF_8.name());
-
+           // crear contexto
             Context context = new Context();
             context.setVariables(mail.getModel());
+            //agregar plantilla html al contenido del mensaje
             String html = templateEngine.process("email/email-template", context);
 
             helper.setTo(mail.getTo());
