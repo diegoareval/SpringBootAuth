@@ -11,9 +11,12 @@ import com.twilio.type.PhoneNumber;
 @SpringBootApplication
 public class Run implements CommandLineRunner{
 
-	private final static String ACCOUNT_SID="ACb474a32f80de36c56e21ba0472455a44";
-	private final static String AUTH_TOKEN="52677f655b80be239a358d2a3a87cdb1";
+	private final static String ACCOUNT_SID="SECRET";
+	private final static String AUTH_TOKEN="SECRET";
 	public static final String TWILIO_NUMBER = "+19175254972";
+	public static final String DESTINATION_NUMBER = "+50376540104";
+	public static final String MESSAGE = "Bienvenido al sistema";
+	
 	
     public static void main(String[] args) {
         SpringApplication.run(Run.class, args);
@@ -21,19 +24,20 @@ public class Run implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		SendMessage();  
+	}
+	public void SendMessage() {
 		try {
 			Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 			  Message.creator(
-			            new PhoneNumber("+50376540104"),
+			            new PhoneNumber(DESTINATION_NUMBER),
 			            new PhoneNumber(TWILIO_NUMBER),
-			            "Bienvenido al sistema")
+			            MESSAGE)
 			            .create();
 			System.out.println("mensaje enviado con exito");
 		}catch(Exception ex) {
 			System.out.println("error: "+ex.getMessage());
 		}
-		  
-		
 	}
 
 }
