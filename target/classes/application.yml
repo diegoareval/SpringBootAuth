@@ -25,7 +25,7 @@ spring:
     default-encoding: UTF-8
     host: smtp.gmail.com
     username: devssoftware72@gmail.com
-    password: exex4001
+    password: secret
     port: 587
     properties:
       mail:
